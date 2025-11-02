@@ -31,6 +31,33 @@ albedo_texture = ExtResource("1_bcixf")
 uv1_scale = Vector3(0.2, 0.2, 0.2)
 uv1_triplanar = true
 
+[sub_resource type="Animation" id="Animation_4dow1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_c67ir"]
 resource_name = "toggle_doom_mode"
 length = 0.25
@@ -57,33 +84,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0, -0.2617296, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_4dow1"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4dow1"]
@@ -403,7 +403,7 @@ libraries = {
 }
 
 [node name="blaster-g2" parent="PlayerFPS/CameraPivot/PlayerCamera/WeaponPivot" instance=ExtResource("8_45t5u")]
-transform = Transform3D(0.937104, 0.09933713, 0.33461627, -0.031648587, 0.9788811, -0.20196624, -0.34761223, 0.17867327, 0.92045724, 0.14431114, -0.2827381, -0.34143603)
+transform = Transform3D(0.9371039, 0.09933713, 0.33461624, -0.031648587, 0.9788811, -0.20196623, -0.34761223, 0.17867327, 0.9204572, 0.14431114, -0.2827381, -0.34143603)
 
 [node name="BulletSpawnPoint" type="Marker3D" parent="PlayerFPS/CameraPivot/PlayerCamera/WeaponPivot/blaster-g2"]
 unique_name_in_owner = true
