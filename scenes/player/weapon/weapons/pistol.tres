@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Weapon" load_steps=2 format=3 uid="uid://60eiyakv2f2c"]
+
+[ext_resource type="Script" uid="uid://ditvf0x5vnaki" path="res://scenes/player/weapon/weapon.gd" id="1_4hh2h"]
+
+[resource]
+script = ExtResource("1_4hh2h")
+fire_rate = 5.0
+shoot_impulse = 10.0
+metadata/_custom_type_script = "uid://ditvf0x5vnaki"

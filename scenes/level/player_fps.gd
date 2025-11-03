@@ -34,7 +34,7 @@ var movement_enabled: bool = true
 @onready var weapon_animation_player: AnimationPlayer = $"CameraPivot/PlayerCamera/WeaponPivot/blaster-g2/AnimationPlayer"
 @onready var camera_pivot_target_rotation_offset: Vector2
 @onready var weapon_pivot_animation_player: AnimationPlayer = $CameraPivot/PlayerCamera/WeaponPivot/WeaponPivotAnimationPlayer
-@onready var weapon_controller: Node3D = $CameraPivot/PlayerCamera/WeaponPivot/WeaponController
+@onready var weapon_controller: WeaponController = $CameraPivot/PlayerCamera/WeaponPivot/WeaponController
 
 var _time_until_can_shoot: float = 0.0
 var _changing_weapon_mode: bool = false
@@ -128,7 +128,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func shoot_weapon():
-	_time_until_can_shoot = 1.0 / weapon_controller.fire_rate
+	_time_until_can_shoot = 1.0 / weapon_controller.fire_rate()
 	weapon_animation_player.play("shoot")
 	match weapon_controller.shoot_mode:
 		ShootMode.RIGID_BODY:
@@ -143,7 +143,7 @@ func shoot_weapon():
 				var collider = hit_scan_ray_cast.get_collider()
 				if collider is RigidBody3D:
 					collider.apply_impulse(
-						-hit_scan_ray_cast.global_basis.z * weapon_controller.shoot_impulse,
+						-hit_scan_ray_cast.global_basis.z * weapon_controller.shoot_impulse(),
 						hit_scan_ray_cast.get_collision_point() - collider.global_position
 						)
 				var bullet_hole_decal: Node3D = BULLET_HOLE_DECAL.instantiate()

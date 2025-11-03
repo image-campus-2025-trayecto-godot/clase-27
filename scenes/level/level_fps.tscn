@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://d32go3mt62d31"]
+[gd_scene load_steps=32 format=3 uid="uid://d32go3mt62d31"]
 
 [ext_resource type="Texture2D" uid="uid://b5tw0gu0i625b" path="res://assets/GreyboxTextures/GreyboxTextures/greybox_blue_grid.png" id="1_bcixf"]
 [ext_resource type="Script" uid="uid://b7svhf7f5emr1" path="res://scenes/level/level.gd" id="1_scyvi"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://cmtkhuebtueov" path="res://scenes/player/weapon/weapon_controller.gd" id="5_jwyb7"]
 [ext_resource type="Script" uid="uid://cm6bvjjhychqi" path="res://scenes/level/player_fps.gd" id="5_scyvi"]
 [ext_resource type="PackedScene" uid="uid://cnwc6idbd5no6" path="res://scenes/level/props/barrel.tscn" id="6_jwyb7"]
+[ext_resource type="Resource" uid="uid://cysqh278ocn80" path="res://scenes/player/weapon/weapons/shotgun.tres" id="6_o1a5k"]
 [ext_resource type="Script" uid="uid://cru8pmyng1url" path="res://scenes/level/crosshair.gd" id="7_wx0nk"]
 [ext_resource type="PackedScene" uid="uid://dkuy060ytkcwq" path="res://assets/kenney_blaster-kit_2.1/Models/GLB format/blaster-g.glb" id="8_45t5u"]
 [ext_resource type="PackedScene" uid="uid://cmpqbxl153lmv" path="res://scenes/player/weapon_view.tscn" id="9_ennbq"]
@@ -393,13 +394,12 @@ transform = Transform3D(1, 0, 0, 0, 0.9274321, -0.37399158, 0, 0.37399158, 0.927
 current = true
 
 [node name="WeaponPivot" type="Node3D" parent="PlayerFPS/CameraPivot/PlayerCamera"]
-transform = Transform3D(0.99891055, 0.014958842, -0.04421124, -0.010086867, 0.99405235, 0.108434185, 0.045570325, -0.107869975, 0.99312073, 0.15790828, -0.28491816, -0.28577396)
+transform = Transform3D(0.99891055, 0.014958841, -0.04421124, -0.010086867, 0.9940523, 0.108434185, 0.045570325, -0.10786997, 0.99312073, 0.15790828, -0.28491816, -0.28577396)
 
 [node name="WeaponController" type="Node3D" parent="PlayerFPS/CameraPivot/PlayerCamera/WeaponPivot"]
 transform = Transform3D(0.99999994, -1.8626451e-09, 3.7252903e-09, -1.8626451e-09, 0.99999994, -2.9802322e-08, -3.7252903e-09, 0, 0.9999999, 0, 0, 0)
 script = ExtResource("5_jwyb7")
-fire_rate = 5.0
-shoot_impulse = 1.0
+weapon = ExtResource("6_o1a5k")
 max_recoil_angle = 0.314
 bullet_impulse = 500.0
 weapon_mode = 0
