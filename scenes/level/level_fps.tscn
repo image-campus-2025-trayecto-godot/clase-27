@@ -402,6 +402,7 @@ script = ExtResource("5_jwyb7")
 fire_rate = 5.0
 shoot_impulse = 1.0
 max_recoil_angle = 0.314
+bullet_impulse = 500.0
 
 [node name="WeaponPivotAnimationPlayer" type="AnimationPlayer" parent="PlayerFPS/CameraPivot/PlayerCamera/WeaponPivot"]
 libraries = {

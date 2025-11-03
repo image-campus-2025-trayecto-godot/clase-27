@@ -22,7 +22,7 @@ enum ShootMode {
 @export_range(0.01, 1.0, 0.01) var mouse_sensitivity: float = 0.15
 @export_category("Weapon")
 @export var weapon_mode: WeaponMode = WeaponMode.SemiAutomatic
-@export var shoot_mode: ShootMode = ShootMode.HITSCAN
+
 
 var _mouse_motion: Vector2
 var movement_enabled: bool = true
@@ -131,7 +131,7 @@ func _physics_process(delta: float) -> void:
 func shoot_weapon():
 	_time_until_can_shoot = 1.0 / weapon_controller.fire_rate
 	weapon_animation_player.play("shoot")
-	match shoot_mode:
+	match weapon_controller.shoot_mode:
 		ShootMode.RIGID_BODY:
 			var bullet: RigidBody3D = BULLET_RIGID_BODY.instantiate()
 			get_parent().add_child(bullet)
