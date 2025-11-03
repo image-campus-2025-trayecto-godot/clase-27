@@ -22,7 +22,7 @@ enum ShootMode {
 @export_range(0.01, 1.0, 0.01) var mouse_sensitivity: float = 0.15
 @export_category("Weapon")
 @export var weapon_mode: WeaponMode = WeaponMode.SemiAutomatic
-@export var fire_rate: float = 10
+
 @export var shoot_mode: ShootMode = ShootMode.HITSCAN
 @export var shoot_impulse: float = 20.0
 @export var max_recoil_angle: float = PI / 10
@@ -39,6 +39,7 @@ var movement_enabled: bool = true
 @onready var weapon_animation_player: AnimationPlayer = $"CameraPivot/PlayerCamera/WeaponPivot/blaster-g2/AnimationPlayer"
 @onready var camera_pivot_target_rotation_offset: Vector2
 @onready var weapon_pivot_animation_player: AnimationPlayer = $CameraPivot/PlayerCamera/WeaponPivot/WeaponPivotAnimationPlayer
+@onready var weapon_controller: Node3D = $CameraPivot/PlayerCamera/WeaponPivot/WeaponController
 
 var _time_until_can_shoot: float = 0.0
 var _changing_weapon_mode: bool = false
@@ -132,7 +133,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func shoot_weapon():
-	_time_until_can_shoot = 1.0 / fire_rate
+	_time_until_can_shoot = 1.0 / weapon_controller.fire_rate
 	weapon_animation_player.play("shoot")
 	match shoot_mode:
 		ShootMode.RIGID_BODY:

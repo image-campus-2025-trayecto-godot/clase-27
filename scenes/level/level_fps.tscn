@@ -384,7 +384,6 @@ transform = Transform3D(0.999909, 0.0005169482, -0.013481079, -0.00080292136, 0.
 collision_mask = 2147483650
 script = ExtResource("5_scyvi")
 weapon_mode = 0
-fire_rate = 50.0
 shoot_impulse = 1.0
 bullet_impulse = 5.0
 
@@ -397,11 +396,12 @@ transform = Transform3D(1, 0, 0, 0, 0.9274321, -0.37399158, 0, 0.37399158, 0.927
 current = true
 
 [node name="WeaponPivot" type="Node3D" parent="PlayerFPS/CameraPivot/PlayerCamera"]
-transform = Transform3D(0.99891055, 0.0149588445, -0.04421124, -0.010086867, 0.9940525, 0.108434185, 0.045570325, -0.10787, 0.99312073, 0.15790828, -0.28491816, -0.28577396)
+transform = Transform3D(0.99891055, 0.014958843, -0.04421124, -0.010086867, 0.9940524, 0.108434185, 0.045570325, -0.10786998, 0.99312073, 0.15790828, -0.28491816, -0.28577396)
 
 [node name="WeaponController" type="Node3D" parent="PlayerFPS/CameraPivot/PlayerCamera/WeaponPivot"]
 transform = Transform3D(0.99999994, -1.8626451e-09, 3.7252903e-09, -1.8626451e-09, 0.99999994, -2.9802322e-08, -3.7252903e-09, 0, 0.9999999, 0, 0, 0)
 script = ExtResource("5_jwyb7")
+fire_rate = 1.0
 
 [node name="WeaponPivotAnimationPlayer" type="AnimationPlayer" parent="PlayerFPS/CameraPivot/PlayerCamera/WeaponPivot"]
 libraries = {
