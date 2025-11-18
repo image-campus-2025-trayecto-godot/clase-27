@@ -1,6 +1,7 @@
 class_name StateMachine
 extends Node
 
+@export var debug_mode: bool
 @onready var states = get_children()
 @onready var current_state = states.front() : set = change_state
 
@@ -17,6 +18,10 @@ func _ready() -> void:
 		)
 	if initial_state_name:
 		change_state(get_node(initial_state_name))
+	else:
+		if not agent.is_node_ready():
+			await agent.ready
+		current_state.enter()
 
 
 func _process(delta: float) -> void:
@@ -30,6 +35,11 @@ func change_state(new_state):
 		return
 	if not agent.is_node_ready():
 		await agent.ready
+	if debug_mode:
+		print_debug("Changing state from %s to %s" % [current_state.name, new_state.name])
 	current_state.exit()
 	current_state = new_state
 	current_state.enter()
+
+func handle_event(event):
+	current_state.handle_event(event)

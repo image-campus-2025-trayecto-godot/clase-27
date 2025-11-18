@@ -10,8 +10,15 @@ func on_tick(delta: float) -> void:
 func on_physics_tick(delta: float) -> void:
 	if not agent.targeted_node:
 		change_state("Idle")
-	elif agent.is_target_locked_on():
-		change_state("ChargingAttack")
 
 func exit() -> void:
 	pass
+
+func handle_event(event: Turret.Event) -> void:
+	match event:
+		Turret.Event.Destroyed:
+			change_state("Destroyed")
+		Turret.Event.PlayerOutOfSight:
+			change_state("Idle")
+		Turret.Event.PlayerLockedOn:
+			change_state("ChargingAttack")

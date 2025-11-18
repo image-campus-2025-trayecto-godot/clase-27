@@ -169,7 +169,7 @@ func shoot_weapon():
 						hit_scan_ray_cast.get_collision_point() - collider.global_position
 						)
 				elif collider.has_method("was_shot"):
-					collider.was_shot()
+					collider.was_shot(self)
 				var bullet_hole_decal: Node3D = BULLET_HOLE_DECAL.instantiate()
 				collider.add_child(bullet_hole_decal)
 				bullet_hole_decal.setup_visibility(collider)

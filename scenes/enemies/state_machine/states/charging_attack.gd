@@ -17,3 +17,8 @@ func on_physics_tick(delta: float) -> void:
 
 func exit() -> void:
 	pass
+
+func handle_event(event: Turret.Event) -> void:
+	match event:
+		Turret.Event.Destroyed:
+			change_state("Destroyed")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://c1y8ubxu4xr77"]
+[gd_scene load_steps=43 format=3 uid="uid://c1y8ubxu4xr77"]
 
 [ext_resource type="Script" uid="uid://dtxrdsxtlalvq" path="res://scenes/enemies/turret.gd" id="1_oabpu"]
 [ext_resource type="Script" uid="uid://5i8wffquxux1" path="res://scenes/enemies/face.gd" id="2_wqsho"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://cbry2umrmsgkg" path="res://scenes/enemies/state_machine/states/tracking.gd" id="8_w2i2w"]
 [ext_resource type="Script" uid="uid://du830ao8xn0a2" path="res://scenes/enemies/state_machine/states/charging_attack.gd" id="10_kr03i"]
 [ext_resource type="Script" uid="uid://dkprs5vo74nti" path="res://scenes/enemies/state_machine/states/attacking.gd" id="11_0rpki"]
+[ext_resource type="Script" uid="uid://cgnyd0u8l83dj" path="res://scenes/enemies/state_machine/states/destroyed.gd" id="12_c7ilg"]
 
 [sub_resource type="Gradient" id="Gradient_oabpu"]
 offsets = PackedFloat32Array(0, 0.46067417, 1)
@@ -143,7 +144,7 @@ point_count = 8
 data = PackedVector3Array(-0.8880267, -2.461792, -0.8880266, -1.2558594, -2.461792, -1.0979071e-07, 0, -2.461792, 0, -1.2558594, -2.461792, -1.0979071e-07, -0.8880267, -2.461792, -0.8880266, 0, 2.461792, 0, 1.4975972e-08, -2.461792, -1.2558594, -0.8880267, -2.461792, -0.8880266, 0, -2.461792, 0, -0.8880267, -2.461792, -0.8880266, 1.4975972e-08, -2.461792, -1.2558594, 0, 2.461792, 0, -1.2558594, -2.461792, -1.0979071e-07, -0.88802665, -2.461792, 0.88802665, 0, -2.461792, 0, -0.88802665, -2.461792, 0.88802665, -1.2558594, -2.461792, -1.0979071e-07, 0, 2.461792, 0, -0.88802665, -2.461792, 0.88802665, -5.4895356e-08, -2.461792, 1.2558594, 0, -2.461792, 0, -5.4895356e-08, -2.461792, 1.2558594, -0.88802665, -2.461792, 0.88802665, 0, 2.461792, 0, 0.88802654, -2.461792, -0.88802683, 1.4975972e-08, -2.461792, -1.2558594, 0, -2.461792, 0, 1.4975972e-08, -2.461792, -1.2558594, 0.88802654, -2.461792, -0.88802683, 0, 2.461792, 0, 1.2558594, -2.461792, 0, 0.88802654, -2.461792, -0.88802683, 0, -2.461792, 0, 0.88802654, -2.461792, -0.88802683, 1.2558594, -2.461792, 0, 0, 2.461792, 0, -5.4895356e-08, -2.461792, 1.2558594, 0.88802665, -2.461792, 0.88802665, 0, -2.461792, 0, 0.88802665, -2.461792, 0.88802665, -5.4895356e-08, -2.461792, 1.2558594, 0, 2.461792, 0, 0.88802665, -2.461792, 0.88802665, 1.2558594, -2.461792, 0, 0, -2.461792, 0, 1.2558594, -2.461792, 0, 0.88802665, -2.461792, 0.88802665, 0, 2.461792, 0)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_d5tah"]
-radius = 12.0
+radius = 30.0
 
 [sub_resource type="Animation" id="Animation_oabpu"]
 length = 0.001
@@ -302,6 +303,138 @@ tracks/12/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("FacePivot/Face/GPUParticles3D2:emitting")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("FacePivot/Face/Weapon1:scale")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 0.99999976, 0.99999976)]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("FacePivot/Face/Weapon2:scale")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.9999996, 0.9999998, 0.99999976)]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("FacePivot/Face/Weapon3:scale")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 0.9999998, 0.9999998)]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("FacePivot/Face/Weapon4:scale")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 0.9999998, 0.99999976)]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("FacePivot/Face/Weapon5:scale")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 0.99999976, 0.99999976)]
+}
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("FacePivot/Face/Weapon1:visible")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/20/type = "value"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("FacePivot/Face/Weapon2:visible")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/21/type = "value"
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/path = NodePath("FacePivot/Face/Weapon3:visible")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/22/type = "value"
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/path = NodePath("FacePivot/Face/Weapon4:visible")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/23/type = "value"
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/path = NodePath("FacePivot/Face/Weapon5:visible")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_0w8p4"]
@@ -483,10 +616,170 @@ tracks/12/keys = {
 "values": [false, false, true]
 }
 
+[sub_resource type="Animation" id="Animation_c7ilg"]
+resource_name = "destroyed"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FacePivot/Face/ParticlesIdle:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FacePivot/Face/ParticlesAggresive:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FacePivot/Face/GPUParticles3D2:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.108333334),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("FacePivot/Face/Weapon1:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.51),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1, 0.99999976, 0.99999976), Vector3(0.001, 0.001, 0.001)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("FacePivot/Face/Weapon2:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.51),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.9999996, 0.9999998, 0.99999976), Vector3(0.001, 0.001, 0.001)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("FacePivot/Face/Weapon3:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.51),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1, 0.9999998, 0.9999998), Vector3(0.001, 0.001, 0.001)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("FacePivot/Face/Weapon4:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.51),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1, 0.9999998, 0.99999976), Vector3(0.001, 0.001, 0.001)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("FacePivot/Face/Weapon5:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.51),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1, 0.99999976, 0.99999976), Vector3(0.001, 0.001, 0.001)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("FacePivot/Face/Weapon1:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0.6),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("FacePivot/Face/Weapon2:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0.6),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("FacePivot/Face/Weapon3:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0.6),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("FacePivot/Face/Weapon4:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0.6),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("FacePivot/Face/Weapon5:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0.6),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_oabpu"]
 _data = {
 &"RESET": SubResource("Animation_oabpu"),
 &"aggresive": SubResource("Animation_0w8p4"),
+&"destroyed": SubResource("Animation_c7ilg"),
 &"idle": SubResource("Animation_ue2uv"),
 &"switch_to_aggresive": SubResource("Animation_wqsho")
 }
@@ -495,6 +788,7 @@ _data = {
 script = ExtResource("1_oabpu")
 weapons_track_target = true
 attack_telegraph_time = 0.5
+patrolling_turn_speed = 0.62
 
 [node name="FacePivot" type="Node3D" parent="."]
 
@@ -630,3 +924,6 @@ script = ExtResource("10_kr03i")
 
 [node name="Attacking" type="Node" parent="StateMachine"]
 script = ExtResource("11_0rpki")
+
+[node name="Destroyed" type="Node" parent="StateMachine"]
+script = ExtResource("12_c7ilg")
