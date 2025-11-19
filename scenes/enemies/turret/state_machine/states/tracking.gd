@@ -1,7 +1,7 @@
 class_name Tracking
 extends TurretState
 
-func enter() -> void:
+func enter(data) -> void:
 	agent.switch_to_aggresive_mode_animation()
 
 func on_tick(delta: float) -> void:
@@ -14,7 +14,7 @@ func on_physics_tick(delta: float) -> void:
 func exit() -> void:
 	pass
 
-func handle_event(event: Turret.Event) -> void:
+func handle_event(event: Turret.Event, data) -> void:
 	match event:
 		Turret.Event.Destroyed:
 			change_state("Destroyed")

@@ -20,7 +20,7 @@ func _update_player_movement_enabled():
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
-func _input(event: InputEvent) -> void:
+func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("toggle_free_camera"):
 		is_free_camera = !is_free_camera
 	if event.is_action_pressed("pause"):
@@ -49,7 +49,8 @@ func _input(event: InputEvent) -> void:
 			var result = space_state.intersect_ray(query)
 
 			if result:
-				%Zombie.target_position = result.position
+				%Zombie.move_to_target_position(result.position)
+				%ZombieGigante.move_to_target_position(result.position)
 
 func _update_camera_enabled():
 	free_camera.movement_enabled = is_free_camera and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED

@@ -4,7 +4,7 @@ extends TurretState
 var time_left_to_patrol: float = 0.0
 var time_left_to_stay_idle: float = 0.0
 
-func enter() -> void:
+func enter(data) -> void:
 	time_left_to_stay_idle = randf_range(2.0, 4.0)
 	agent.switch_to_idle_mode_animation()
 
@@ -28,7 +28,7 @@ func on_physics_tick(delta: float) -> void:
 func exit() -> void:
 	pass
 
-func handle_event(event: Turret.Event) -> void:
+func handle_event(event: Turret.Event, data) -> void:
 	match event:
 		Turret.Event.Destroyed:
 			change_state("Destroyed")

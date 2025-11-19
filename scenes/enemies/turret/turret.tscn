@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://ct2gdpokelg1j" path="res://scenes/enemies/turret/eye.tscn" id="4_wqsho"]
 [ext_resource type="Script" uid="uid://c5r1q6bnlphxb" path="res://scenes/enemies/turret/weapons_path.gd" id="5_0w8p4"]
 [ext_resource type="Script" uid="uid://c41q6r1f1xfm5" path="res://scenes/enemies/turret/state_machine/states/idle.gd" id="7_0w8p4"]
-[ext_resource type="Script" uid="uid://h1hvq0g7oqiy" path="res://scenes/enemies/turret/state_machine/state_machine.gd" id="7_d5tah"]
+[ext_resource type="Script" uid="uid://h1hvq0g7oqiy" path="res://scenes/enemies/state_machine.gd" id="7_d5tah"]
 [ext_resource type="Script" uid="uid://cbry2umrmsgkg" path="res://scenes/enemies/turret/state_machine/states/tracking.gd" id="8_w2i2w"]
 [ext_resource type="Script" uid="uid://du830ao8xn0a2" path="res://scenes/enemies/turret/state_machine/states/charging_attack.gd" id="10_kr03i"]
 [ext_resource type="Script" uid="uid://dkprs5vo74nti" path="res://scenes/enemies/turret/state_machine/states/attacking.gd" id="11_0rpki"]

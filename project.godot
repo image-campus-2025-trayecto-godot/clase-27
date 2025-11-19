@@ -117,4 +117,5 @@ toggle_doom_mode={
 
 [rendering]
 
+anti_aliasing/quality/msaa_3d=3
 limits/cluster_builder/max_clustered_elements=1024.0

@@ -20,7 +20,7 @@ func _physics_process(delta: float) -> void:
 
 	global_rotation.y -= _mouse_motion.x * delta * mouse_sensitivy
 	global_rotation.x -= _mouse_motion.y * delta * mouse_sensitivy
-	global_rotation.x = clampf(global_rotation.x, - PI * 9 / 10, PI / 4)
+	global_rotation.x = clampf(global_rotation.x, - PI / 3, PI / 4)
 	_mouse_motion = Vector2.ZERO
 	
 	var movement_direction := global_basis.x.normalized() * input.x + global_basis.z.normalized() * input.y

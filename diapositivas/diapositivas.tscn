@@ -88,7 +88,7 @@ size_flags_vertical = 3
 mouse_filter = 2
 theme = SubResource("Theme_l4vhf")
 script = ExtResource("1_rsqhl")
-diapositiva_actual = 1
+diapositiva_actual = 2
 metadata/_edit_lock_ = true
 
 [node name="EjemploTitulo" type="Control" parent="."]
@@ -184,6 +184,7 @@ horizontal_alignment = 1
 autowrap_mode = 2
 
 [node name="Agenda" type="Control" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -228,7 +229,11 @@ label_settings = ExtResource("8_4sra1")
 layout_mode = 2
 text = "- Repaso de la clase anterior
 - Navegación 3D
-	- NavMesh"
+	- NavMesh
+      - Opciones al bakear
+      - Arreglando errores de navegación
+- Agentes de diferentes tamaño
+- Puertas"
 label_settings = SubResource("LabelSettings_dftkn")
 
 [node name="Preguntas" type="Control" parent="."]

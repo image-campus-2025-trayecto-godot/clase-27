@@ -1,10 +1,10 @@
 @abstract
-class_name TurretState
+class_name ZombieState
 extends Node
 
-var agent: Turret
+var agent: Zombie
 
-signal change_state_requested(new_state_name)
+signal change_state_requested(new_state_name, data)
 
 @abstract func enter(data) -> void
 
@@ -14,7 +14,7 @@ signal change_state_requested(new_state_name)
 
 @abstract func exit() -> void
 
-@abstract func handle_event(event: Turret.Event, data) -> void
+@abstract func handle_event(event: Zombie.Event, data) -> void
 
 func change_state(new_state_name: String, data = {}):
 	change_state_requested.emit(new_state_name, data)

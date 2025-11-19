@@ -1,7 +1,7 @@
 class_name Attacking
 extends TurretState
 
-func enter() -> void:
+func enter(data) -> void:
 	agent.shoot()
 
 func exit() -> void:
@@ -13,7 +13,7 @@ func on_tick(delta: float) -> void:
 func on_physics_tick(delta: float) -> void:
 	pass
 
-func handle_event(event: Turret.Event) -> void:
+func handle_event(event: Turret.Event, data) -> void:
 	match event:
 		Turret.Event.Destroyed:
 			change_state("Destroyed")

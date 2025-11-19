@@ -3,7 +3,7 @@ extends TurretState
 
 var time_until_attack: float = 0.0
 
-func enter() -> void:
+func enter(data) -> void:
 	time_until_attack = agent.attack_telegraph_time
 	agent.play_charging_attack_animation()
 
@@ -18,7 +18,7 @@ func on_physics_tick(delta: float) -> void:
 func exit() -> void:
 	pass
 
-func handle_event(event: Turret.Event) -> void:
+func handle_event(event: Turret.Event, data) -> void:
 	match event:
 		Turret.Event.Destroyed:
 			change_state("Destroyed")

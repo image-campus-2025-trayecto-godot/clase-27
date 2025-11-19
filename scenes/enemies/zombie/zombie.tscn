@@ -1,11 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://c0hp8ndn32vd8"]
+[gd_scene load_steps=10 format=3 uid="uid://c0hp8ndn32vd8"]
 
 [ext_resource type="PackedScene" uid="uid://bnrtpt3o8gi5h" path="res://assets/kenney_mini-dungeon/Models/GLB format/character-orc.glb" id="1_4fy3t"]
 [ext_resource type="Script" uid="uid://ccnio7gu7htt5" path="res://scenes/enemies/zombie/zombie.gd" id="1_8s5xd"]
+[ext_resource type="Script" uid="uid://h1hvq0g7oqiy" path="res://scenes/enemies/state_machine.gd" id="3_olowh"]
+[ext_resource type="Script" uid="uid://5nevg5dq448m" path="res://scenes/enemies/zombie/state_machine/zombie_idle.gd" id="4_w1sjg"]
+[ext_resource type="Script" uid="uid://cpv8q5w4w2afa" path="res://scenes/enemies/zombie/state_machine/zombie_walking_towards.gd" id="5_pg837"]
+[ext_resource type="Script" uid="uid://fe7l7ouyliqs" path="res://scenes/enemies/zombie/movement.gd" id="6_pwrlg"]
+[ext_resource type="Script" uid="uid://p1ik1x33heyt" path="res://scenes/enemies/zombie/navigation_based_movement.gd" id="7_pfcy5"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8s5xd"]
-radius = 0.34521484
-height = 1.3515625
+radius = 0.35
+height = 0.7026367
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8s5xd"]
 albedo_color = Color(1, 0, 0, 1)
@@ -16,27 +21,39 @@ collision_mask = 2147483648
 script = ExtResource("1_8s5xd")
 
 [node name="character-orc2" parent="." instance=ExtResource("1_4fy3t")]
-transform = Transform3D(-2, 0, -3.019916e-07, 0, 2, 0, 3.019916e-07, 0, -2, 0, 0, 0)
+transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0, 0, 0)
 
 [node name="Skeleton3D" parent="character-orc2/character-orc" index="0"]
 bones/4/rotation = Quaternion(0, 0, -0.3826835, 0.92387956)
 bones/5/rotation = Quaternion(0, 0, 0.3826835, 0.92387956)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6816406, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35717773, 0)
 shape = SubResource("CapsuleShape3D_8s5xd")
 
-[node name="StateMachine" type="Node" parent="."]
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("agent")]
+script = ExtResource("3_olowh")
+agent = NodePath("..")
 
 [node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource("4_w1sjg")
 
 [node name="WalkingTowards" type="Node" parent="StateMachine"]
-
-[node name="LookingAround" type="Node" parent="StateMachine"]
+script = ExtResource("5_pg837")
 
 [node name="TargetPositionDebug" type="CSGSphere3D" parent="."]
 top_level = true
 radius = 0.25
 material = SubResource("StandardMaterial3D_8s5xd")
+
+[node name="Movement" type="Node3D" parent="."]
+script = ExtResource("6_pwrlg")
+
+[node name="NavigationBasedMovement" type="Node3D" parent="."]
+script = ExtResource("7_pfcy5")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+unique_name_in_owner = true
+debug_enabled = true
 
 [editable path="character-orc2"]

@@ -3,7 +3,7 @@ extends Node
 
 @export var debug_mode: bool
 @onready var states = get_children()
-@onready var current_state = states.front() : set = change_state
+@onready var current_state = states.front()
 
 @export var agent: Node3D
 @export var initial_state_name: String = ""
@@ -11,17 +11,17 @@ extends Node
 func _ready() -> void:
 	for state in states:
 		state.agent = agent
-		state.change_state_requested.connect(func(new_state_name: String):
+		state.change_state_requested.connect(func(new_state_name: String, data):
 			if state == current_state:
 				var new_state = get_node(new_state_name)
-				change_state(new_state)
+				change_state(new_state, data)
 		)
 	if initial_state_name:
-		change_state(get_node(initial_state_name))
+		change_state(get_node(initial_state_name), {})
 	else:
 		if not agent.is_node_ready():
 			await agent.ready
-		current_state.enter()
+		current_state.enter({})
 
 
 func _process(delta: float) -> void:
@@ -30,8 +30,9 @@ func _process(delta: float) -> void:
 func _physics_process(delta: float) -> void:
 	current_state.on_physics_tick(delta)
 
-func change_state(new_state):
+func change_state(new_state, data):
 	if current_state == new_state:
+		current_state.enter(data)
 		return
 	if not agent.is_node_ready():
 		await agent.ready
@@ -39,7 +40,7 @@ func change_state(new_state):
 		print_debug("Changing state from %s to %s" % [current_state.name, new_state.name])
 	current_state.exit()
 	current_state = new_state
-	current_state.enter()
+	current_state.enter(data)
 
-func handle_event(event):
-	current_state.handle_event(event)
+func handle_event(event, data = {}):
+	current_state.handle_event(event, data)
