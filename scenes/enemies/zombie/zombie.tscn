@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://c0hp8ndn32vd8"]
+
+[ext_resource type="PackedScene" uid="uid://bnrtpt3o8gi5h" path="res://assets/kenney_mini-dungeon/Models/GLB format/character-orc.glb" id="1_4fy3t"]
+[ext_resource type="Script" uid="uid://ccnio7gu7htt5" path="res://scenes/enemies/zombie/zombie.gd" id="1_8s5xd"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8s5xd"]
+radius = 0.34521484
+height = 1.3515625
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8s5xd"]
+albedo_color = Color(1, 0, 0, 1)
+
+[node name="Zombie" type="CharacterBody3D"]
+collision_layer = 0
+collision_mask = 2147483648
+script = ExtResource("1_8s5xd")
+
+[node name="character-orc2" parent="." instance=ExtResource("1_4fy3t")]
+transform = Transform3D(-2, 0, -3.019916e-07, 0, 2, 0, 3.019916e-07, 0, -2, 0, 0, 0)
+
+[node name="Skeleton3D" parent="character-orc2/character-orc" index="0"]
+bones/4/rotation = Quaternion(0, 0, -0.3826835, 0.92387956)
+bones/5/rotation = Quaternion(0, 0, 0.3826835, 0.92387956)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6816406, 0)
+shape = SubResource("CapsuleShape3D_8s5xd")
+
+[node name="StateMachine" type="Node" parent="."]
+
+[node name="Idle" type="Node" parent="StateMachine"]
+
+[node name="WalkingTowards" type="Node" parent="StateMachine"]
+
+[node name="LookingAround" type="Node" parent="StateMachine"]
+
+[node name="TargetPositionDebug" type="CSGSphere3D" parent="."]
+top_level = true
+radius = 0.25
+material = SubResource("StandardMaterial3D_8s5xd")
+
+[editable path="character-orc2"]

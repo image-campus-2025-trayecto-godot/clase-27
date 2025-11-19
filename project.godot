@@ -14,7 +14,7 @@ ruake/layer=10
 
 [application]
 
-config/name="clase-26"
+config/name="clase-27"
 run/main_scene="uid://d32go3mt62d31"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
