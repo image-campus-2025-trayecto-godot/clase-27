@@ -32,7 +32,7 @@ func move_to_target_position(target_position: Vector3) -> void:
 	target_position_debug.global_position = target_position
 
 func set_velocity_to_move_towards(point: Vector3, delta: float) -> void:
-	var target_velocity = movement.velocity_to_move_towards(self, point, walk_speed, delta)
+	var target_velocity = movement.velocity_to_move_towards(self, point, walk_speed)
 	velocity.x = target_velocity.x
 	velocity.z = target_velocity.z
 

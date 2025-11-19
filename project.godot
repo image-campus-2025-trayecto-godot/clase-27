@@ -114,6 +114,7 @@ toggle_doom_mode={
 [physics]
 
 3d/physics_engine="Jolt Physics"
+3d/default_cell_height=0.1
 
 [rendering]
 

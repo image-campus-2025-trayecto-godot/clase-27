@@ -9,8 +9,8 @@
 [ext_resource type="Script" uid="uid://p1ik1x33heyt" path="res://scenes/enemies/zombie/navigation_based_movement.gd" id="7_pfcy5"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8s5xd"]
-radius = 0.35
-height = 0.7026367
+radius = 0.1
+height = 0.75
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8s5xd"]
 albedo_color = Color(1, 0, 0, 1)
@@ -54,6 +54,9 @@ script = ExtResource("7_pfcy5")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 unique_name_in_owner = true
+path_desired_distance = 0.2
+target_desired_distance = 0.1
+path_height_offset = 0.1
 debug_enabled = true
 
 [editable path="character-orc2"]
