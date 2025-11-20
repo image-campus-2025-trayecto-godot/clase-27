@@ -22,9 +22,18 @@ enum Event {
 		gigante = new_value
 		if gigante:
 			scale = Vector3.ONE * 3
+			if not is_node_ready():
+				await ready
+			navigation_agent_3d.set_navigation_layer_value(1, false)
+			navigation_agent_3d.set_navigation_layer_value(2, true)
 		else:
+			if not is_node_ready():
+				await ready
+			navigation_agent_3d.set_navigation_layer_value(1, true)
+			navigation_agent_3d.set_navigation_layer_value(2, false)
 			scale = Vector3.ONE
 @onready var movement: Node3D = $NavigationBasedMovement
+@onready var navigation_agent_3d: NavigationAgent3D = %NavigationAgent3D
 
 
 func move_to_target_position(target_position: Vector3) -> void:
@@ -35,6 +44,8 @@ func set_velocity_to_move_towards(point: Vector3, delta: float) -> void:
 	var target_velocity = movement.velocity_to_move_towards(self, point, walk_speed)
 	velocity.x = target_velocity.x
 	velocity.z = target_velocity.z
+	if is_on_floor():
+		velocity.y = target_velocity.y
 
 func has_reached_target(target_position: Vector3) -> bool:
 	return movement.has_reached_target(self, target_position)

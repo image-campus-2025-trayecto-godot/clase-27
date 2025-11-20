@@ -4,6 +4,10 @@ extends Node3D
 @export var free_camera: Camera3D
 @export var player_camera: Camera3D
 
+func _physics_process(delta: float) -> void:
+	for zombie in %Zombies.get_children():
+		zombie.move_to_target_position(player.global_position)
+
 var is_free_camera: bool = false :
 	set(new_value):
 		is_free_camera = new_value
@@ -49,8 +53,8 @@ func _unhandled_input(event: InputEvent) -> void:
 			var result = space_state.intersect_ray(query)
 
 			if result:
-				%Zombie.move_to_target_position(result.position)
-				%ZombieGigante.move_to_target_position(result.position)
+				for zombie in %Zombies.get_children():
+					zombie.move_to_target_position(result.position)
 
 func _update_camera_enabled():
 	free_camera.movement_enabled = is_free_camera and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED

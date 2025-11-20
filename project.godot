@@ -24,6 +24,10 @@ config/icon="res://icon.svg"
 RuakeLayer="*res://addons/ruake/ruake/ruake_layer.tscn"
 Decals="*res://globals/Decals.tscn"
 
+[debug]
+
+shapes/navigation/3d/geometry_face_color=Color(0.39656433, 0.16670316, 0.0722959, 0.93333334)
+
 [display]
 
 window/stretch/mode="canvas_items"
